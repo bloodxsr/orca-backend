@@ -31,6 +31,7 @@ pub fn create_router(pool: PgPool) -> Router {
         .route("/jobs/:id", get(spill_handler::get_job))
         // Telemetry
         .route("/telemetry", get(telemetry_handler::get_telemetry))
+        .route("/telemetry/fetch-live", post(telemetry_handler::fetch_live))
         .with_state(pool);
 
     Router::new()
